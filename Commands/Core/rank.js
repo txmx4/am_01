@@ -3,7 +3,7 @@ const {fetchBuffer}=require("../../lib/Function")
 module.exports={
     name: "rank",
     alias: ["rank"],
-    desc: "shows the rank",
+    desc: "zeigt den Rang an",
     cool:3,
     react:"✅",
     category: "General",
