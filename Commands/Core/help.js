@@ -1,7 +1,7 @@
 module.exports = {
   name: "help",
   alias: ["menu", "h", "helpm", "helpmenu"],
-  desc: "Gives all bot commands list",
+  desc: "Gibt eine Liste aller Bot-Befehle an",
   react: "✨",
   category: "Core",
   start: async (Miku, m, {prefix,pushName,NSFWstatus,args,commands,text}) => {
@@ -28,19 +28,15 @@ if (args[0]) {
         } else {
 
 let textHelpMenu = `Konnichiwa *${pushName}* Senpai,
-
-I am *${botName}*, a bot developed by *Team Atlas*.
-
-🎀 My prefix is: *${prefix}*
-
-Here's the list of my Commands.\n
+Ich bin *${botName}*, ein Bot entwickelt von *✨️MAGIC✨️*.
+🎀 Mein prefix ist: *${prefix}*
+Hier ist die Liste meiner Befehle.\n
              
 ╭────ꕥ Core ꕥ────╮
 ├
 ├・🎐 ʜɪ, ʜᴇʟᴘ, 
 ├・🎐 ᴄᴏᴜᴘʟᴇᴘᴘ, ᴏᴡɴᴇʀ, 
-├・🎐 ꜱᴄʀɪᴘᴛ, ꜱᴛᴀʟᴋ, 
-├・🎐 ꜱᴜᴘᴘᴏʀᴛ, ʀᴀɴᴋ
+├・🎐 ꜱᴛᴀʟᴋ, ʀᴀɴᴋ
 ├
 ╰──────────────────╯
 ╭────ꕥ Group ꕥ────╮
@@ -245,16 +241,14 @@ textHelpMenu += `╭────ꕥ NSFW ꕥ────╮
 }
           
 textHelpMenu +=`*🔰  ${botName}  🔰*
- _Powered By:_ *Team ATLAS*
-🎀 To use any of these commands type 
-" *${prefix}Command name* ".
-🏮 To get Support Group link type " *${prefix}support* ".
-🧩 To report any issues to Developer type " *${prefix}report <describe issue>* ".\n`
+ _Bereitgestellt von:_ *✨️MAGIC✨️*
+🎀 Um einen dieser Befehle zu verwenden, geben Sie 
+" *${prefix}Command name* ".\n`
 
 let buttons = [
     {
-      buttonId: `${prefix}repo`,
-      buttonText: { displayText: "Source Code" },
+      buttonId: `${prefix}owner`,
+      buttonText: { displayText: "Bot Owner" },
       type: 1,
     },
   ];
