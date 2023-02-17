@@ -8,7 +8,7 @@ require("../../Database/dataschema.js");
 module.exports = { 
 
     name: "daily",  
-    desc: "daily gold.", 
+    desc: "täglich Gold.", 
     alias: ["daily"],
     category: "Economy",  
     react: "💷", 
