@@ -72,4 +72,3 @@ module.exports = {
           await Miku.sendMessage(m.from, buttonMessage, { quoted: m });
         }
     }
-Footer
