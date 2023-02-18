@@ -2,7 +2,7 @@ module.exports = {
   name: "help",
   alias: ["menu", "h", "helpm", "helpmenu"],
   desc: "Gibt eine Liste aller Bot-Befehle an",
-  react: "✨",
+  react: "🥰",
   category: "Core",
   start: async (Miku, m, {prefix,pushName,NSFWstatus,args,commands,text}) => {
 
@@ -28,7 +28,7 @@ if (args[0]) {
         } else {
 
 let textHelpMenu = `Konnichiwa *${pushName}* Senpai,
-Ich bin *${botName}*, ein Bot entwickelt von *✨️MAGIC✨️*.
+Ich bin *${botName}*, ein Bot entwickelt von *MkM Inc.*.
 🎀 Mein prefix ist: *${prefix}*
 Hier ist die Liste meiner Befehle.\n
              
@@ -241,7 +241,7 @@ textHelpMenu += `╭────ꕥ NSFW ꕥ────╮
 }
           
 textHelpMenu +=`*🔰  ${botName}  🔰*
- _Bereitgestellt von:_ *✨️MAGIC✨️*
+ _Bereitgestellt von:_ *MkM Inc.*
 🎀 Um einen dieser Befehle zu verwenden, geben Sie 
 " *${prefix}Command name* ".\n`
 
