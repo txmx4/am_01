@@ -3,7 +3,7 @@ const { getBuffer } = require("../../lib/myfunc");
 module.exports = {
   name: "animequotes",
   alias: ["aniquotes", "quotesanime","animequote"],
-  desc: "To get a random Anime Quotes pic",
+  desc: "Um ein zufälliges Bild mit Anime-Zitaten zu erhalten",
   category: "Weeb",
   usage: `quatoes`,
   react: "🍁",
@@ -12,19 +12,19 @@ module.exports = {
     var Button = [
       {
         buttonId: `${prefix}animequotes`,
-        buttonText: { displayText: `>>` },
+        buttonText: { displayText: `Weiter...` },
         type: 1,
       },
     ];
     let bmffg = {
       image: Image,
-      caption: `Feel My Quotes *${pushName}* Senpai ♥️`,
+      caption: `Fühle meine Zitate  Senpai ♥️`,
       footer: `*${botName}*`,
       buttons: Button,
       headerType: 4,
     };
     await Miku.sendMessage(m.from, bmffg, { quoted: m }).catch((err) => {
-      return "Error!";
+      return "Fehler!";
     });
   },
 };
