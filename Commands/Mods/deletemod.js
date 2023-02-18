@@ -3,7 +3,7 @@ const { mku } = require("../../Database/dataschema.js");
 module.exports = {
   name: "delmod",
   alias: ["removemod", "unmod", "deleteMod"],
-  desc: "To remove an user from Mod",
+  desc: "Um einen Benutzer aus Mod zu entfernen",
   category: "Mods",
   usage: "delmod @user",
   react: "🎀",
@@ -13,13 +13,13 @@ module.exports = {
     { text, prefix, mentionByTag, pushName, isCreator, owner,modStatus }
   ) => {
 
-      if (modStatus=="false"&&!isCreator)  return Miku.sendMessage(m.from, { text: 'Sorry, only my *Owner* and *Mods* can use this command !' }, { quoted: m });
+      if (modStatus=="false"&&!isCreator)  return Miku.sendMessage(m.from, { text: 'Entschuldigung, nur mein *Owner* und *Mods* können diesen Befehl verwenden !' }, { quoted: m });
     //var TaggedUser = mentionByTag[0];
 
     if (!text && !m.quoted) {
       return Miku.sendMessage(
         m.from,
-        { text: `Please tag a *Mod* to remove from *Moderation* !` },
+        { text: `Bitte markiere einen *Mod*, um ihn aus *Moderation* zu entfernen !` },
         { quoted: m }
       );
     } else if (m.quoted) {
@@ -36,7 +36,7 @@ module.exports = {
         .then(async (user) => {
           if (!user) {
             await mku.create({id:userId, addedMods: false});
-            return m.reply("User is not a *Mod* !");
+            return m.reply("Benutzer ist kein *Mod* !");
             /*Miku.sendMessage( 
               m.from, 
               { text: `@${mentionedUser.split("@")[0]} has been removed from *Mods* Successfully !`, mentions: [mentionedUser] }, 
@@ -47,7 +47,7 @@ module.exports = {
             return Miku.sendMessage(
               m.from,
               {
-                text: `@${mentionedUser.split("@")[0]} is not a *Mod* !`,
+                text: `@${mentionedUser.split("@")[0]} ist kein *Mod* !`,
                 mentions: [mentionedUser],
               },
               { quoted: m }
@@ -58,7 +58,7 @@ module.exports = {
               m.from,
               {
                 text: `@${mentionedUser.split("@")[0]
-                  } is an *Owner* and cannot be removed from mod !`,
+                  } ist ein *Eigentümer* und kann nicht aus dem Mod entfernt werden !`,
                 mentions: [mentionedUser],
               },
               { quoted: m }
@@ -70,7 +70,7 @@ module.exports = {
                 m.from,
                 {
                   text: `@${mentionedUser.split("@")[0]
-                    } has been removed from *Mods* Successfully !`,
+                    } wurde erfolgreich aus *Mods* entfernt !`,
                   mentions: [mentionedUser],
                 },
                 { quoted: m }
