@@ -24,7 +24,7 @@ var Button = [
       headerType: 4,
     };
     await Miku.sendMessage(m.from, neko, { quoted: m }).catch((err) => {
-      return "Error!";
+      return "Fehler!";
     });
 }, 
 };
