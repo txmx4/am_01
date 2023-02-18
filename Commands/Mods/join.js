@@ -4,7 +4,7 @@ const { mku } = require("../../Database/dataschema.js");
 module.exports = {
     name: "join",
     alias: ["joingc"],
-    desc: "ask bot to Join a group",
+    desc: "Bitten Sie den Bot, einer Gruppe beizutreten",
     category: "Mods",
     usage: "join <link>",
     react: "🎀",
@@ -14,19 +14,19 @@ module.exports = {
       { args, text,prefix, isCreator, pushName,modStatus }
     ) => {
       
-      if (modStatus=="false"&&!isCreator)  return Miku.sendMessage(m.from, { text: 'Sorry, only my *Owner* and *Mods* can use this command !' }, { quoted: m });
+      if (modStatus=="false"&&!isCreator)  return Miku.sendMessage(m.from, { text: 'Entschuldigung, nur mein *Owner* und *Mods* können diesen Befehl verwenden !' }, { quoted: m });
 
-        if (!text) return Miku.sendMessage(m.from, { text: 'Please provide a valid WhatsApp group link !' }, { quoted: m });
-        if (!args[0].includes('whatsapp.com')) return Miku.sendMessage(m.from, { text: 'Please provide a valid WhatsApp group link !' }, { quoted: m });
+        if (!text) return Miku.sendMessage(m.from, { text: 'Bitte geben Sie einen gültigen WhatsApp-Gruppenlink an !' }, { quoted: m });
+        if (!args[0].includes('whatsapp.com')) return Miku.sendMessage(m.from, { text: 'Bitte geben Sie einen gültigen WhatsApp-Gruppenlink an !' }, { quoted: m });
         let gcJoinCode = args[0].split('https://chat.whatsapp.com/')[1]
         
         await  Miku.groupAcceptInvite(gcJoinCode).then( async (res) => {
-          Miku.sendMessage(m.from, { text: `_Successfully Joined !_`}, { quoted: m }).catch((e)=>{
-            Miku.sendMessage(m.from, { text: `_Failed to join group ! Maybe bot was removed from there before !_`}, { quoted: m })
+          Miku.sendMessage(m.from, { text: `_Erfolgreich beigetreten !_`}, { quoted: m }).catch((e)=>{
+            Miku.sendMessage(m.from, { text: `_Beitritt zur Gruppe fehlgeschlagen ! Vielleicht wurde der Bot vorher von dort entfernt !_`}, { quoted: m })
           }
           )
         }).catch((e)=>{
-          Miku.sendMessage(m.from, { text: `_Failed to join group ! Maybe bot was removed from there before !_`}, { quoted: m })
+          Miku.sendMessage(m.from, { text: `_Beitritt zur Gruppe fehlgeschlagen ! Vielleicht wurde der Bot vorher von dort entfernt !_`}, { quoted: m })
         }
         )
     },
