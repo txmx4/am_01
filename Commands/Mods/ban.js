@@ -9,7 +9,7 @@ module.exports = {
 
     name: "ban", 
     alias: ["banuser"], 
-    desc: "Ban a member", 
+    desc: "Sperre ein Mitglied", 
     category: "core", 
     usage: "ban @user", 
     react: "🎀", 
@@ -20,14 +20,14 @@ module.exports = {
     ) => { 
       
       
-      if (modStatus=="false"&&!isCreator)  return Miku.sendMessage(m.from, { text: 'Sorry, only my *Devs* and *Mods* can use this command !' }, { quoted: m });
+      if (modStatus=="false"&&!isCreator)  return Miku.sendMessage(m.from, { text: 'Tut mir leid, nur meine *Devs* und *Mods* können diesen Befehl verwenden !' }, { quoted: m });
         
       //var TaggedUser = mentionByTag[0];
 
       if (!text && !m.quoted) {
         return Miku.sendMessage( 
           m.from, 
-          { text: `Please tag a user to *Ban*!` }, 
+          { text: `Bitte markieren Sie einen Benutzer mit *Ban*!` }, 
           { quoted: m } 
         )}
        
@@ -42,7 +42,7 @@ module.exports = {
 let banreason = args.join(" ")
 
 if (m.quoted && !args.join(" ")) {
-  banreason = "No reason provided";
+  banreason = "Kein Grund angegeben";
 }
 
 if (m.quoted && args.join(" ")) {
@@ -55,7 +55,7 @@ if(banreason.includes("@")){
 
 
 if(banreason == undefined){
-  banreason = "No reason provided";
+  banreason = "Kein Grund angegeben";
 }
 //if (!banreason) return Miku.sendMessage(m.from, { text: `Please provide the reason for ban.\n\n${prefix}ban spamming` }, { quoted: m });
       var ownerlist = global.owner;
@@ -64,7 +64,7 @@ if(banreason == undefined){
       try { 
          mku.findOne({id:userId}).then(async (user) => {
             if (!user) {
-              if (modStatus == "true" || ownerlist.includes(`${mentionedUser.split("@")[0]}`)) return Miku.sendMessage(m.from, { text: `@${mentionedUser.split("@")[0]} is a *Mod* and can't be banned !` , mentions: [mentionedUser]  }, { quoted: m });
+              if (modStatus == "true" || ownerlist.includes(`${mentionedUser.split("@")[0]}`)) return Miku.sendMessage(m.from, { text: `@${mentionedUser.split("@")[0]} ist ein *Mod* und kann nicht gebannt werden !` , mentions: [mentionedUser]  }, { quoted: m });
               await mku.create({id:userId, ban: true, reason: banreason, gcname: GroupName });
               return Miku.sendMessage( 
                 m.from, 
@@ -72,22 +72,22 @@ if(banreason == undefined){
                 { quoted: m } 
               );
             }else{
-              if (modStatus == "true" || ownerlist.includes(`${mentionedUser.split("@")[0]}`)) return Miku.sendMessage(m.from, { text: `@${mentionedUser.split("@")[0]} is a *Mod* and can't be banned !` , mentions: [mentionedUser]  }, { quoted: m });
-                if (user.ban == "true") return Miku.sendMessage(m.from, { text: `@${mentionedUser.split("@")[0]} is already *Banned* !` , mentions: [mentionedUser]  }, { quoted: m });
+              if (modStatus == "true" || ownerlist.includes(`${mentionedUser.split("@")[0]}`)) return Miku.sendMessage(m.from, { text: `@${mentionedUser.split("@")[0]} ist ein *Mod* und kann nicht gebannt werden !` , mentions: [mentionedUser]  }, { quoted: m });
+                if (user.ban == "true") return Miku.sendMessage(m.from, { text: `@${mentionedUser.split("@")[0]} ist bereits *Gesperrt* !` , mentions: [mentionedUser]  }, { quoted: m });
                 await mku.findOneAndUpdate({ id: userId }, { $set: { ban: true, reason: banreason, gcname: GroupName } }, { new: true });
                 return Miku.sendMessage( 
                   m.from, 
-                  { text: `@${mentionedUser.split("@")[0]} has been *Banned* Successfully by *${pushName}*\n\n *Reason*: ${banreason}` , mentions: [mentionedUser]}, 
+                  { text: `@${mentionedUser.split("@")[0]} wurde erfolgreich *gesperrt* von *${pushName}*\n\n *Grund*: ${banreason}` , mentions: [mentionedUser]}, 
                   { quoted: m } 
                 );
             }
          }).catch(error => {
            console.log(error)
-           return Miku.sendMessage(m.from, { text: `An internal error occurred while banning the user.` }, { quoted: m });
+           return Miku.sendMessage(m.from, { text: `Beim Sperren des Benutzers ist ein interner Fehler aufgetreten.` }, { quoted: m });
          });
       } catch (err) { 
         console.log(err);
-        return Miku.sendMessage(m.from, { text: `An internal error occurred while banning the user.` }, { quoted: m });
+        return Miku.sendMessage(m.from, { text: `Beim Sperren des Benutzers ist ein interner Fehler aufgetreten.` }, { quoted: m });
       } 
     }, 
   };
