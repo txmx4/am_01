@@ -8,7 +8,7 @@ const { mk,mku, mkchar } = require("../../Database/dataschema.js");
 module.exports = {
     name: "modeswitch",
     alias: ["mode","botmode"],
-    desc: "Change bot working mode to public/private",
+    desc: "Ändern Sie den Bot-Arbeitsmodus in public/private",
     category: "Mods",
     usage: "mode [public/private]",
     react: "🎀",
@@ -18,9 +18,9 @@ module.exports = {
       { args, isBotAdmin, isAdmin, isCreator, reply,prefix,pushName,botNumber,modStatus }
     ) => {
     
-          if (modStatus=="false"&&!isCreator)  return Miku.sendMessage(m.from, { text: 'Sorry, only my *Owner* and *Mods* can use this command !' }, { quoted: m });
+          if (modStatus=="false"&&!isCreator)  return Miku.sendMessage(m.from, { text: 'Entschuldigung, nur mein *Owner* und *Mods* können diesen Befehl verwenden !' }, { quoted: m });
           if (args[0]=="self"&& m.sender != botNumber) {
-            return Miku.sendMessage(m.from, { text: 'Sorry, only  *Bot hoster* can use this feature !' }, { quoted: m });
+            return Miku.sendMessage(m.from, { text: 'Tut mir leid, nur *Bot-Owner* kann diese Funktion nutzen !' }, { quoted: m });
           }
 
       let checkdata = await mkchar.findOne({ id: '1'});
@@ -37,26 +37,26 @@ module.exports = {
           Miku.sendMessage(
             m.from,
             {
-              text: `*Private Mode* has been *Activated* !\n\nNow only *Mods* can use my commands !`
+              text: `*Der private Modus* wurde *Aktiviert* !\n\nJetzt können nur *Mods* meine Befehle verwenden !`
             },
             { quoted: m }
           );
           return Miku.sendMessage(
             m.from,
-            { text: `*Private Mode* has been *Activated* !\n\nNow only *Mods* can use my commands !` },
+            { text: `*Privatmodus* wurde *Aktiviert* !\n\nJetzt können nur *Mods* meine Befehle verwenden!` },
             { quoted: m }
           );
         } else {
           if (checkdata.privateMode == "true")
             return Miku.sendMessage(
                 m.from,
-                { text: `*Private Mode* is already *Activated* !\n\nNow only *Mods* can use my commands !` },
+                { text: `*Privatmodus* ist bereits *Aktiviert* !\n\nJetzt können nur *Mods* meine Befehle verwenden !` },
                 { quoted: m }
               );
           await mkchar.updateOne({ id: '1'}, { privateMode: "true" });
           return Miku.sendMessage(
             m.from,
-            { text: `*Private Mode* has been *Activated* !\n\nNow only *Mods* can use my commands !` },
+            { text: `*Privatmodus* wurde *Aktiviert* !\n\nJetzt können nur *Mods* meine Befehle verwenden !` },
             { quoted: m }
           );
         }
@@ -65,19 +65,19 @@ module.exports = {
           await new mkchar({ id: '1', privateMode: "false" }).save();
           return Miku.sendMessage(
             m.from,
-            { text: `*Public Mode* has been *Activated* !\n\nNow *Everyone* can use my commands !` },
+            { text: `*Der Öffentliche Modus* wurde *Aktiviert* !\n\nJetzt kann *Jeder* meine Befehle verwenden !` },
             { quoted: m }
           );
         } else {
           if (checkdata.privateMode == "false") return Miku.sendMessage(
             m.from,
-            { text: `*Public Mode* is already *Activated* !\n\nNow *Everyone* can use my commands !` },
+            { text: `*Der Öffentliche Modus* ist bereits *Aktiviert* !\n\nJetzt kann *Jeder* meine Befehle verwenden !` },
             { quoted: m }
           );
           await mkchar.updateOne({ id: '1' }, { privateMode: "false" });
           return Miku.sendMessage(
             m.from,
-            { text: `*Public Mode* has been *Activated* !\n\nNow *Everyone* can use my commands !` },
+            { text: `*Öffentlicher Modus* wurde *Aktiviert* !\n\nJetzt kann *Jeder* meine Befehle verwenden !` },
             { quoted: m }
           );
         }
@@ -86,19 +86,19 @@ module.exports = {
           await new mkchar({ id: '1', privateMode: "self" }).save();
           return Miku.sendMessage(
             m.from,
-            { text: `*Self Mode* has been *Activated* !\n\nNow only *Bot Hoster* can use my commands !` },
+            { text: `*Selbstmodus* wurde *Aktiviert* !\n\nJetzt kann nur noch *Bot Hoster* meine Befehle verwenden !` },
             { quoted: m }
           );
         } else {
           if (checkdata.privateMode == "self") return Miku.sendMessage(
             m.from,
-            { text: `*Self Mode* is already *Activated* !\n\nNow only *Bot Hoster* can use my commands !` },
+            { text: `*Selbstmodus* ist bereits *Aktiviert* !\n\nJetzt kann nur noch *Bot Hoster* meine Befehle verwenden !` },
             { quoted: m }
           );
           await mkchar.updateOne({ id: '1' }, { privateMode: "self" });
           return Miku.sendMessage(
             m.from,
-            { text: `*Self Mode* has been *Activated* !\n\nNow only *Bot hoster* can use my commands !` },
+            { text: `*Selbstmodus* wurde *Aktiviert* !\n\nJetzt kann nur noch *Bot-Hoster* meine Befehle verwenden !` },
             { quoted: m }
           );
         }
@@ -107,23 +107,23 @@ module.exports = {
         let buttonsntilink = [
           {
             buttonId: `${prefix}mode public`,
-            buttonText: { displayText: "Public Mode" },
+            buttonText: { displayText: "Öffentlicher Modus" },
             type: 1,
           },
           {
             buttonId: `${prefix}mode private`,
-            buttonText: { displayText: "Private Mode" },
+            buttonText: { displayText: "Privater Modus" },
             type: 1,
           },
           {
             buttonId: `${prefix}mode self`,
-            buttonText: { displayText: "Self Mode" },
+            buttonText: { displayText: "Selbstmodus" },
             type: 1,
           },
         ];
         let bmffg = {
           image: {url : botImage6} ,
-          caption: `\n*「  Mode configuration  」*\nPlease click the button below\n*Self / Public / Private*\n`,
+          caption: `\n*「  Moduskonfiguration  」*\nBitte klicken Sie auf die Schaltfläche unten\n*Selbst / Öffentlich / Privat*\n`,
           footer: `*${botName}*`,
           buttons: buttonsntilink,
           headerType: 4,
