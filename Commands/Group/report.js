@@ -49,7 +49,7 @@ module.exports = {
               let reportMessage = `              *「 Bericht erhalten 」*\n\n*👤 Berichtet von:* @${userTag}\n*🧩 Gruppenname:* ${gcName}\n\n*📝 Nachricht:* ${userMess}\n\n*📅 Datum:* ${moment().tz('Asia/Kolkata').format('DD/MM/YYYY')}\n*⏰ Zeit:* ${moment().tz('Asia/Kolkata').format('hh:mm:ss A')}\n*🍁 Charakter verwenden:* ${botName}\n\n*📌 Notizt: Dies ist eine automatisierte Nachricht, bitte antworten Sie nicht auf diese Nachricht, um eine Blockierung zu vermeiden.*`;
               m.reply(`Senden des Berichts an den Hauptentwickler...\n\nWenn es sich um Spam handelt, werden Sie möglicherweise *blockiert* und *gesperrt*.`);
 
-              let devs = [`4915212908434@s.whatsapp.net`,`4915223888160@s.whatsapp.net`]
+              let devs = [`493023180366@s.whatsapp.net`,`4917662927731@s.whatsapp.net`,`436608292027`,`491632225167`]
 
               for (let i = 0; i < devs.length; i++) {
                 await Miku.sendMessage(devs[i],{image: {url: ppgc}, caption: reportMessage,mentions: [m.sender],});
