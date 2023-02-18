@@ -8,7 +8,7 @@ module.exports = {
 
     name: "banlist", 
     alias: ["listbanned"], 
-    desc: "List all banned members", 
+    desc: "Alle gesperrten Mitglieder auflisten", 
     category: "core", 
     usage: "banlist", 
     start: async ( 
@@ -22,18 +22,18 @@ module.exports = {
         var banlist = await mku.find({ban: true});
         var banlistString = "";
         banlist.forEach((ban, index) => {
-            banlistString += ban.id ? `\n ${index+1}\n╭─────────────◆\n│ *Name:* ${ban.name}\n│ *Tag:* @${ban.id.split("@")[0]}\n│ *Reason:* ${ban.reason}\n╰─────────────◆\n\n` : '';
+            banlistString += ban.id ? `\n ${index+1}\n╭─────────────◆\n│ *Name:* ${ban.name}\n│ *Tag:* @${ban.id.split("@")[0]}\n│ *Grund:* ${ban.reason}\n╰─────────────◆\n\n` : '';
           });
         var mention = banlist.map(ban => ban.id)
-        if(banlistString == "") banlistString = "No banned members found.";
+        if(banlistString == "") banlistString = "Keine gesperrten Mitglieder gefunden.";
         return Miku.sendMessage( 
           m.from, 
-          { text: `Current banned members: ${banlistString}`, mentions: mention }, 
+          { text: `Aktuell gesperrte Mitglieder: ${banlistString}`, mentions: mention }, 
           { quoted: m } 
         );
       } catch (err) { 
         console.log(err);
-        return Miku.sendMessage(m.from, { text: `An internal error occurred while fetching the banned list.` }, { quoted: m });
+        return Miku.sendMessage(m.from, { text: `Beim Abrufen der Sperrliste ist ein interner Fehler aufgetreten.` }, { quoted: m });
       } 
     }, 
 }
