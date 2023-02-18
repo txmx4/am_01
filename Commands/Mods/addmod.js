@@ -4,7 +4,7 @@ module.exports = {
 
     name: "addmod", 
     alias: ["makemod"], 
-    desc: "To made an user Mod", 
+    desc: "Um einen Benutzer-Mod zu geben", 
     category: "Mods", 
     usage: "addmod @user", 
     react: "🎀", 
@@ -15,13 +15,13 @@ module.exports = {
     ) => { 
 
 
-      if (modStatus=="false"&&!isCreator)  return Miku.sendMessage(m.from, { text: 'Sorry, only my *Owner* and *Mods* can use this command !' }, { quoted: m });
+      if (modStatus=="false"&&!isCreator)  return Miku.sendMessage(m.from, { text: 'Entschuldigung, nur mein *Owner* und *Mods* können diesen Befehl verwenden!' }, { quoted: m });
       //var TaggedUser = mentionByTag[0];
 
       if (!text && !m.quoted) {
         return Miku.sendMessage( 
           m.from, 
-          { text: `Please tag a user to make *Mod*!` }, 
+          { text: `Bitte markiere einen Benutzer, um *Mod* zu geben!` }, 
           { quoted: m } 
         )}
         else if(m.quoted){
@@ -40,7 +40,7 @@ module.exports = {
             await mku.create({id:userId, addedMods: true});
             return Miku.sendMessage( 
               m.from, 
-              { text: `@${mentionedUser.split("@")[0]} has been added to *Mods* Successfully !`, mentions: [mentionedUser] }, 
+              { text: `@${mentionedUser.split("@")[0]} wurde erfolgreich zu *Mods* hinzugefügt !`, mentions: [mentionedUser] }, 
               { quoted: m } 
             );
           }
@@ -48,12 +48,12 @@ module.exports = {
               await mku.findOneAndUpdate({ id: userId }, { addedMods: true }, { new: true });
               return Miku.sendMessage( 
                 m.from, 
-                { text: `@${mentionedUser.split("@")[0]} has been added to *Mods* Successfully !` , mentions: [mentionedUser]}, 
+                { text: `@${mentionedUser.split("@")[0]} wurde erfolgreich zu *Mods* hinzugefügt !` , mentions: [mentionedUser]}, 
                 { quoted: m } 
               );
           }
           else if (user.addedMods === true) {
-              return Miku.sendMessage(m.from, { text: `@${mentionedUser.split("@")[0]} is already a *Mod* !` , mentions: [mentionedUser]  }, { quoted: m });
+              return Miku.sendMessage(m.from, { text: `@${mentionedUser.split("@")[0]} ist bereits ein *Mod* !` , mentions: [mentionedUser]  }, { quoted: m });
           }
           else {
             if (user.addedMods == "true" || ownerlist.includes(`${mentionedUser.split("@")[0]}`)) return Miku.sendMessage(m.from, { text: `@${mentionedUser.split("@")[0]} is already a *Mod* !` , mentions: [mentionedUser]  }, { quoted: m });
@@ -62,14 +62,14 @@ module.exports = {
               await mku.create({id:userId, addedMods: true});
               return Miku.sendMessage( 
                 m.from, 
-                { text: `@${mentionedUser.split("@")[0]} has been added to *Mods* Successfully !`, mentions: [mentionedUser] }, 
+                { text: `@${mentionedUser.split("@")[0]} wurde erfolgreich zu *Mods* hinzugefügt !`, mentions: [mentionedUser] }, 
                 { quoted: m } 
               );
             }else{
                 await mku.findOneAndUpdate({ id: userId }, { addedMods: true }, { new: true });
                 return Miku.sendMessage( 
                   m.from, 
-                  { text: `@${mentionedUser.split("@")[0]} has been added to *Mods* Successfully !` , mentions: [mentionedUser]}, 
+                  { text: `@${mentionedUser.split("@")[0]} wurde erfolgreich zu *Mods* hinzugefügt !` , mentions: [mentionedUser]}, 
                   { quoted: m } 
                 );
             }
@@ -77,11 +77,11 @@ module.exports = {
           
          }).catch(error => {
            console.log(error)
-           return Miku.sendMessage(m.from, { text: `An internal error occurred while adding the user.` }, { quoted: m });
+           return Miku.sendMessage(m.from, { text: `Beim Hinzufügen des Benutzers ist ein interner Fehler aufgetreten.` }, { quoted: m });
          });
       } catch (err) { 
         console.log(err);
-        return Miku.sendMessage(m.from, { text: `An internal error occurred while adding the user.` }, { quoted: m });
+        return Miku.sendMessage(m.from, { text: `Beim Hinzufügen des Benutzers ist ein interner Fehler aufgetreten.` }, { quoted: m });
       } 
     }, 
   };
