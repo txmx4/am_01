@@ -9,7 +9,7 @@ module.exports = {
 
     name: "bank",  
     desc: "Zeigt Bankbetrag.", 
-    alias: ["bank"],
+    alias: ["bank","guthaben"],
     category: "Economy",  
     react: "🏦", 
     start: async ( 
