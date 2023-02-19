@@ -1,6 +1,6 @@
 module.exports = {
   name: "help",
-  alias: ["menu", "h", "helpm", "helpmenu"],
+  alias: ["menu", "h", "helpm", "helpmenu","mu"],
   desc: "Gibt eine Liste aller Bot-Befehle an",
   react: "🥰",
   category: "Core",
@@ -30,6 +30,13 @@ if (args[0]) {
 let textHelpMenu = `Konnichiwa *${pushName}* Senpai,
 Ich bin *${botName}*, ein Bot entwickelt von *MkM Inc.*.
 🎀 Mein prefix ist: *${prefix}*
+Hallo, ich bin Atlas,
+Mein Hoster ist Max,
+Mein Developer ist ebenfalls Max.
+Max, bedankt sich bei dir,
+Dass du Atlas benutzt,
+*Viel Spaß* beim nutzen *von* Atlas,
+wünscht dir *Max* .
 Hier ist die Liste meiner Befehle.\n
              
 ╭────ꕥ Core ꕥ────╮
@@ -242,6 +249,7 @@ textHelpMenu += `╭────ꕥ NSFW ꕥ────╮
           
 textHelpMenu +=`*🔰  ${botName}  🔰*
  _Bereitgestellt von:_ *MkM Inc.*
+Session: Atlas-Max_v2
 🎀 Um einen dieser Befehle zu verwenden, geben Sie 
 " *${prefix}Command name* ".\n`
 
